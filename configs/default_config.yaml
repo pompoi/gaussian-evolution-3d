@@ -1,0 +1,40 @@
+# Model Configuration
+model:
+  num_gaussians: 10000  # Number of Gaussian primitives
+  lnn_hidden_size: 256  # Hidden size of Liquid Neural Network
+  lnn_num_layers: 3     # Number of LNN layers
+  lnn_dropout: 0.1      # Dropout rate for LNN
+  use_observations: true  # Whether to use additional observations
+  observation_size: 32   # Size of observation vector
+
+# Renderer Configuration
+renderer:
+  image_width: 800      # Width of rendered images
+  image_height: 600     # Height of rendered images
+  background_color: [0, 0, 0]  # RGB background color
+  tile_size: 64         # Size of rendering tiles
+
+# Training Configuration
+training:
+  sequence_length: 60   # Length of sequence for truncated BPTT
+  sequence_stride: 30   # Stride between sequences
+  truncation_length: 60  # BPTT truncation length
+  gradient_clip_val: 1.0  # Gradient clipping value
+  patience: 10          # Early stopping patience
+  min_lr: 1e-6         # Minimum learning rate
+  lr_factor: 0.5       # Learning rate reduction factor
+  lr_patience: 5       # Learning rate scheduler patience
+  lr_threshold: 1e-4   # Learning rate scheduler threshold
+
+# Loss Configuration
+loss:
+  l1_weight: 1.0       # Weight for L1 loss
+  ssim_weight: 0.5     # Weight for SSIM loss
+  depth_weight: 0.1    # Weight for depth loss
+  smoothness_weight: 0.01  # Weight for smoothness loss
+
+# Logging Configuration
+logging:
+  project_name: "gaussian-evolution"  # W&B project name
+  log_interval: 10     # How often to log
+  save_interval: 5     # How often to save checkpoints (epochs)
